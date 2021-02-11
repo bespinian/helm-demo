@@ -62,6 +62,17 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
+Build the database host name to use
+*/}}
+{{- define "helm-demo.dbHost" -}}
+{{- if .Values.db.local }}
+{{- printf "%s-%s" .Release.Name "postgres" }}
+{{- else }}
+{{- .Values.db.host }}
+{{- end }}
+{{- end }}
+
+{{/*
 Decide on the image version to use
 */}}
 {{- define "helm-demo.imageVersion" -}}
