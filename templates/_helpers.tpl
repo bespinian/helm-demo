@@ -36,8 +36,8 @@ Common labels
 {{- define "helm-demo.labels" -}}
 helm.sh/chart: {{ include "helm-demo.chart" . }}
 {{ include "helm-demo.selectorLabels" . }}
-{{- if .Chart.AppVersion }}
-app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- if .Values.image.tag }}
+app.kubernetes.io/version: {{ .Values.image.tag | quote }}
 {{- end }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{- end }}
@@ -77,8 +77,8 @@ Decide on the image version to use
 */}}
 {{- define "helm-demo.imageVersion" -}}
 {{- if .Values.image.tag }}
-{{- default .Chart.AppVersion .Values.image.tag }}
+{{- .Values.image.tag }}
 {{- else }}
-{{- default .Chart.AppVersion .Values.app.version }}
+{{- .Values.app.version }}
 {{- end }}
 {{- end }}
