@@ -51,7 +51,45 @@ Note that we tell Helm to use `values-tst.yaml` instead of the default.
 We issue the following command to deploy the `dev` instance:
 
 ```
-helm install tst . -f values-dev.yaml --namespace awesome-helm-dev
+helm install dev . -f values-dev.yaml --namespace awesome-helm-dev
 ```
 
 Note that we tell Helm to use `values-dev.yaml` instead of the default. We see that in this case, a local Postgresql instance is deployed to the same namespace.
+
+### Uninstalling charts
+
+We can uninstall the dev, tst and prd instances with the following commands:
+
+```
+helm uninstall dev . --namespace awesome-helm-dev
+helm uninstall tst . --namespace awesome-helm-tst
+helm uninstall prd . --namespace awesome-helm
+```
+
+## Deploy from a remote Helm repo
+
+### Add the repo
+
+Take a look at [https://bespinian.github.io/charts](). There you will find the typical layout of a Helm repo consisting of an `index.yaml` file along with the packaged Helm charts which are being served from this particular repo.
+
+We can add the repo to Helm with the following command:
+
+```
+helm repo add bespinian https://bespinian.github.io/charts
+```
+
+### Install dev from the remote repo
+
+Now that we have added the remote repo under the name `bespinian`, we can install the chart directly from it, using the values file for the dev environment.
+
+```
+helm install dev bespinian/helm-demo -f values-dev.yaml --namespace awesome-helm-dev
+```
+
+### Clean up
+
+Finally we remove the dev instance again:
+
+```
+helm uninstall dev . --namespace awesome-helm-dev
+```
