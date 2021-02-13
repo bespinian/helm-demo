@@ -66,7 +66,7 @@ Build the database host name to use
 */}}
 {{- define "helm-demo.dbHost" -}}
 {{- if .Values.db.local }}
-{{- printf "%s-%s" .Release.Name "postgres" }}
+{{- printf "%s-%s" .Release.Name "postgresql" }}
 {{- else }}
 {{- .Values.db.host }}
 {{- end }}

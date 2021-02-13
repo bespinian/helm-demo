@@ -61,9 +61,9 @@ Note that we tell Helm to use `values-dev.yaml` instead of the default. We see t
 We can uninstall the dev, tst and prd instances with the following commands:
 
 ```
-helm uninstall dev . --namespace awesome-helm-dev
-helm uninstall tst . --namespace awesome-helm-tst
-helm uninstall prd . --namespace awesome-helm
+helm uninstall dev --namespace awesome-helm-dev
+helm uninstall tst --namespace awesome-helm-tst
+helm uninstall prd --namespace awesome-helm
 ```
 
 ## Deploy from a remote Helm repo
@@ -91,5 +91,5 @@ helm install dev bespinian/helm-demo -f values-dev.yaml --namespace awesome-helm
 Finally we remove the dev instance again:
 
 ```
-helm uninstall dev . --namespace awesome-helm-dev
+helm uninstall dev --namespace awesome-helm-dev
 ```
