@@ -1,7 +1,3 @@
-globals:
-  postgresql:
-    enabled: true
-
 replicaCount: 1
 
 image:
@@ -13,4 +9,3 @@ app:
 
 db:
   local: true
-
