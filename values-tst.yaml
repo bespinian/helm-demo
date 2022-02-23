@@ -3,6 +3,9 @@ replicaCount: 1
 image:
   tag: "1.0.1"
 
+ingress:
+  host: awesome-helm-tst.bespinian.io
+
 app:
   title: "Something slightly more awesome!"
   version: "1.0.1"

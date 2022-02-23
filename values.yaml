@@ -22,6 +22,9 @@ service:
   type: LoadBalancer
   port: 80
 
+ingress:
+  host: awesome-helm.bespinian.io
+
 app:
   title: "Something awesome"
   version: "1.0.0"
